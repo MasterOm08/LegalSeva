@@ -19,16 +19,18 @@ flowchart TD
 
 ## Key Features & Engineering Highlights
 
-* **Fine-Tuned Clause Extraction:** QLoRA 4-bit fine-tuned LLaMA-3-8B model trained against the **CUAD** (Contract Understanding Atticus Dataset) across 41 risk categories (ROUGE-L: ~0.4119).
-* **NLI Hallucination Verification:** Integrates `DeBERTa-large-mnli` to verify generated summaries against source text, maintaining factual hallucination rates ≤ 0.15.
-* **Automated Lawyer-Routing Policy:** Automatically flags contracts with unverified claims (`hallucination_rate > 0.20`) or self-consistency conflicts, marking them with `mandatory_lawyer_review = True`.
-* **Source Sentence Attribution:** Calculates TF-IDF and embedding similarity to attribute claims back to the exact top-3 contract source clauses.
-* **EU AI Act Annex III Package:** Fully compliant high-risk AI documentation (`COMPLIANCE_ANNEX_III.md`), mandatory non-legal advice disclaimer banners, and audit log generation.
-* **MLOps Lineage & Privacy Tracking:** Logs contract statistics, clause distributions, and evaluation runs without storing raw user contract text (`src/mlops_tracker.py`).
+## Key Features & Highlights
+
+* **Legal Clause Audit:** Powered by an AI model specifically trained on thousands of standard contract terms across 41 key risk categories.
+* **Fact Verification Guardrail:** Cross-checks generated analysis against the original contract text to ensure accuracy and eliminate false information.
+* **Human-in-the-Loop Safeguard:** Automatically flags high-risk contracts or unverified statements for mandatory review by qualified legal counsel.
+* **Exact Clause Attribution:** Traces every finding directly back to the exact section and sentence in your original document.
+* **EU AI Act Compliance:** Designed to align with High-Risk AI System standards (Annex III), complete with audit logs and safety disclaimers.
+* **Privacy-First Tracking:** Records performance metrics and usage data without ever storing sensitive contract text.
 
 ---
 
-## Tech Stack
+## Core Frameworks & Technologies
 
 * **Large Language Model:** LLaMA-3-8B (QLoRA 4-bit quantized)
 * **NLI Guardrails:** DeBERTa-large-mnli
