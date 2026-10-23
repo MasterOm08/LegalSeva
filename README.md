@@ -81,10 +81,9 @@ legal-llm-contract-review/
 ### Option 1: Local Virtual Environment (`venv`)
 
 1. **Clone the Repository**
-    ```powershell
-    git clone [https://github.com/MasterOm08/LegalSeva.git](https://github.com/MasterOm08/LegalSeva.git)
-    cd LegalSeva
-    ```
+   ```powershell
+   git clone [https://github.com/MasterOm08/LegalSeva.git](https://github.com/MasterOm08/LegalSeva.git)
+   cd LegalSeva
 
 2. **Activate Virtual Environment**
     ```powershell
