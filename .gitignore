@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Environment & Dependencies
+.env
+.env.*
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Datasets & Large Files
+data/
+*.csv
+*.tsv
+*.jsonl
+*.parquet
+*.h5
+*.hd5
+
+# Machine Learning Weights & Models
+*.bin
+*.pt
+*.pth
+*.onnx
+*.safetensors
+models/
+checkpoints/
+
+# Vector Stores & Databases
+chroma_db/
+*.db
+*.sqlite3
+
+# Logs & Testing
+*.log
+mlruns/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs & System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Output artifacts
+outputs/
+temp/
+tmp/
+CUAD_v1/
+CUAD_v1/*
