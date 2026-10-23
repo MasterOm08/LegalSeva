@@ -20,7 +20,8 @@ flowchart TD
 ## Key Features & Engineering Highlights
 
 * **Fine-Tuned Clause Extraction:** QLoRA 4-bit fine-tuned LLaMA-3-8B model trained against the **CUAD** (Contract Understanding Atticus Dataset) across 41 risk categories (ROUGE-L: ~0.4119).
-* **NLI Hallucination Verification:** Integrates `DeBERTa-large-mnli` to verify generated summaries against source text, maintaining factual hallucination rates ≤ 0.15.* **Automated Lawyer-Routing Policy:** Automatically flags contracts with unverified claims (`hallucination_rate > 0.20`) or self-consistency conflicts, marking them with `mandatory_lawyer_review = True`.
+* **NLI Hallucination Verification:** Integrates `DeBERTa-large-mnli` to verify generated summaries against source text, maintaining factual hallucination rates ≤ 0.15.
+* **Automated Lawyer-Routing Policy:** Automatically flags contracts with unverified claims (`hallucination_rate > 0.20`) or self-consistency conflicts, marking them with `mandatory_lawyer_review = True`.
 * **Source Sentence Attribution:** Calculates TF-IDF and embedding similarity to attribute claims back to the exact top-3 contract source clauses.
 * **EU AI Act Annex III Package:** Fully compliant high-risk AI documentation (`COMPLIANCE_ANNEX_III.md`), mandatory non-legal advice disclaimer banners, and audit log generation.
 * **MLOps Lineage & Privacy Tracking:** Logs contract statistics, clause distributions, and evaluation runs without storing raw user contract text (`src/mlops_tracker.py`).
@@ -68,3 +69,45 @@ legal-llm-contract-review/
 ├── ingest_cuad.py            # Vector ingestion script
 ├── train_qlora.py            # QLoRA fine-tuning pipeline
 └── verification.py           # NLI verification tests
+```
+---
+
+## Quick Start & Deployment Guide
+
+### Prerequisites
+* Python 3.10 or higher
+* Git
+
+### Option 1: Local Virtual Environment (`venv`)
+
+1. **Clone the Repository**<img width="1291" height="982" alt="image" src="https://github.com/user-attachments/assets/0cea970a-bd60-464d-aeb7-8a547cd8ee56" />
+
+   git clone https://github.com/MasterOm08/LegalSeva.git
+   cd LegalSeva
+
+3. **Activate Virtual Environment**
+   ### Windows PowerShell
+   .\venv\Scripts\Activate.ps1
+
+   ### Linux/macOS
+   source venv/bin/activate
+
+4. **Install Dependencies**
+   pip install -r requirements.txt
+
+5. **Launch Backend API Server**
+   python -m uvicorn src.main:app --reload --port 8000
+
+6. **Launch Frontend Streamlit App (In a second activated terminal window)**
+   .\venv\Scripts\Activate.ps1
+   streamlit run app.py
+
+---
+
+### Option 2: Docker Container Deployment
+
+1. **Build Docker Image**
+   docker build -t legalseva-backend .
+
+2. **Run Container**
+   docker run -d -p 8000:8000 --name legalseva_app legalseva-backend
